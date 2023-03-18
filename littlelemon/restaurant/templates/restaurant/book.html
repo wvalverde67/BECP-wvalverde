@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <article>
+        <h1>Make a reservation</h1>
+        <!--Begin row-->
+        <div class="row">
+            <!--Begin col-->
+            <div class="column">
+                {% csrf_token %}
+                <form method="POST" id="form">
+                    <!-- {% csrf_token %} -->
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" placeholder="Your Name" maxlength="200" required="" id="name">
+                    </p>
+                    <p>
+                        <!-- Step 9: Part one -->
+                        <label for="bookingdate">Reservation date:</label>
+                        <input type="date" id="bookingdate">
+                    </p>
+                    <p>
+                        <label for="no_of_guest">Number of Guest:</label>
+                        <input type="number" placeholder="Number of Guest" min="1" max="10" required=""
+                            id="no_of_guest">
+                    </p>
+                    <button type="button" id="button" class="reserveButton">Reserve</button>
+                </form>
+            </div>
+            <!--End col-->
+        </div>
+        <!--End row-->
+    </article>
+</section>
+<script>
+
+    const reserveButton = document.getElementById("button");
+
+
+    reserveButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        const date = new Date();
+        document.getElementById("bookingdate").value = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
+        const formdata = {
+            name: document.getElementById("name").value,
+            bookingdate: document.getElementById("bookingdate").value,
+            no_of_guest: document.getElementById("no_of_guest").value,
+        };
+        // validar que el formulario no esté vacío
+        if (formdata.name === "" || formdata.bookingdate === "" || formdata.no_of_guest === "") {
+            alert("Por favor, llena todos los campos.");
+            return;
+        }
+
+        fetch("{% url 'book' %}", {
+            method: "post",
+            body: JSON.stringify(formdata),
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": document.getElementsByName("csrfmiddlewaretoken")[0].value
+            },
+        }).then((response) => {
+            console.log("http response" + response.status); // Esto mostrará el código de estado HTTP
+            if (response.ok) {
+                // Si la respuesta es exitosa
+                alert("Reservación realizada con éxito.");
+                // Limpiar el formulario
+                document.getElementById("form").reset();
+            } else {
+                // Si hay algún problema con la respuesta
+                alert("Ocurrió un problema al realizar la reservación. Por favor, inténtalo de nuevo.");
+            }
+        });
+    });
+
+</script>
+{% endblock %}

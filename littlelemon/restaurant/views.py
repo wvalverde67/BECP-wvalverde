@@ -3,7 +3,10 @@ from rest_framework import generics
 from rest_framework import viewsets
 from .models import Menu, Booking
 from .serializers import MenuSerializer, BookingSerializer
+from .forms import BookingForm
 from rest_framework.permissions import IsAuthenticated
+import json
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -16,7 +19,29 @@ def menu(request):
     context = {'menu_items': menu_items}
     return render(request, 'restaurant/menu.html', context)
 
+#view for booking page
+def book(request):
+    if request.method == 'POST':
+        # Decodificar los datos JSON enviados en la solicitud POST
+        data = json.loads(request.body)
 
+        # Crear una instancia de BookingForm con los datos decodificados
+        form = BookingForm(data)
+        if not form.is_valid():
+            # Devolver una respuesta JSON en caso de error en la validación
+            return JsonResponse({"status": "error", "errors": form.errors}, status=400)
+
+        form.save()
+        # Devolver una respuesta JSON en caso de éxito
+        return JsonResponse({"status": "success"}, status=201)
+    # El código original para manejar solicitudes GET u otros métodos
+    form = BookingForm()
+    context = {'form': form}
+    return render(request, 'restaurant/book.html', context)
+
+# view for about page
+def about(request):
+    return render(request, 'restaurant/about.html', {})
 
 class MenuItemsView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
