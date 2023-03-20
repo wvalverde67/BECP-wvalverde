@@ -35,20 +35,9 @@ pipenv install
 python manage.py makemigrations
 python manage.py migrate
 
-5. Assuming you are using MySQL update settings.py with username and password:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'LittleLemon',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'admindjango',
-        'PASSWORD': 'employee@123!',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
+5. Assuming you are using MySQL update settings.py with your username and password:
+        - 'USER': 'admindjango',
+        - 'PASSWORD': 'employee@123!',
 
 
 6. Run the development server:
