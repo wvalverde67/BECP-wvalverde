@@ -40,17 +40,27 @@ python manage.py migrate
 - 'PASSWORD': 'employee@123!',
 
 
-6. Run the development server:
+## Testing
+1. Run the development server:
 python manage.py runserver
 
-7. Open your web browser and go to http://localhost:8000/restaurant
+2. Open your web browser and go to http://localhost:8000/restaurant
 - Browse the restaurant menu and select the items you want to order.
-- Make a reservation by selecting the date, time, and number of guests.
-- View your reservations and modify or cancel them if needed.
+- Make a reservation by selecting the date and number of guests.
 - Access the restaurant information page to learn more about the establishment.
 - Use the API to interact with the Menu and Booking models programmatically.
 
+3. API's:
 
+- use from the web page to display restaurant menu: http://localhost:8000/restaurant/menu/
+- use from the web page to make a reservation:  http://localhost:8000/restaurant/book/
+- use from the web page to display about.html:  http://localhost:8000/restaurant/about
+- use this endpoint from Insomnia (or any) to test menu item: 
+  -  http://localhost:8000/restaurant/menu-items/
+- use this endpoint from Insomnia (or any) to test reservations: 
+  -  http://localhost:8000/restaurant/reservations/'
+    
+    
 ## Credits
 
 This project was developed by Willie Valverde as a Back-End Capstone Project for the Tech Academy's Python Developer Bootcamp.
