@@ -19,3 +19,53 @@ To install and run this project, follow these steps:
 
 1. Clone the repository:
 
+git clone https://github.com/wvalverde/restaurant-app.git
+
+
+2. Create a virtual environment:
+
+pypenv shell
+
+3. Install the requirements:
+
+pipenv install
+
+4. Install the app:
+
+python manage.py makemigrations
+python manage.py migrate
+
+5. Assuming you are using MySQL update settings.py with username and password:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'LittleLemon',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'admindjango',
+        'PASSWORD': 'employee@123!',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+
+
+6. Run the development server:
+python manage.py runserver
+
+7. Open your web browser and go to http://localhost:8000/restaurant
+- Browse the restaurant menu and select the items you want to order.
+- Make a reservation by selecting the date, time, and number of guests.
+- View your reservations and modify or cancel them if needed.
+- Access the restaurant information page to learn more about the establishment.
+- Use the API to interact with the Menu and Booking models programmatically.
+
+
+## Credits
+
+This project was developed by Willie Valverde as a Back-End Capstone Project for the Tech Academy's Python Developer Bootcamp.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
