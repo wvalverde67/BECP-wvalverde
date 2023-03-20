@@ -1,13 +1,21 @@
-# BECP-wvalverde
-Back-End Capstone Project Willie Valverde
+# BECP-wvalverde: Django Restaurant Project
 
+Welcome to my Back-End Capstone Project, a restaurant web application developed with Django and the Django REST Framework.
 
+## Description
 
-#Django Restaurant Project
-This project is a restaurant web application developed using the Django framework and the Django REST Framework library. The application allows users to view the menu, make reservations, and obtain information about the restaurant.
+This application allows users to view the restaurant menu, make table reservations, and access information about the restaurant. It also provides a RESTful API for interacting with the Menu and Booking models.
 
-#Key features
-Displaying the restaurant menu
-Table reservations for authenticated users
-Restaurant information page
-RESTful API for interacting with the Menu and Booking models
+## Key features
+
+- Displaying the restaurant menu
+- Table reservations for authenticated users
+- Restaurant information page
+- RESTful API for interacting with the Menu and Booking models
+
+## Installation
+
+To install and run this project, follow these steps:
+
+1. Clone the repository:
+
