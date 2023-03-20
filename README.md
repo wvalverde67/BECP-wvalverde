@@ -36,8 +36,8 @@ python manage.py makemigrations
 python manage.py migrate
 
 5. Assuming you are using MySQL update settings.py with your username and password:
-        - 'USER': 'admindjango',
-        - 'PASSWORD': 'employee@123!',
+- 'USER': 'admindjango',
+- 'PASSWORD': 'employee@123!',
 
 
 6. Run the development server:
