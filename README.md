@@ -19,7 +19,7 @@ To install and run this project, follow these steps:
 
 1. Clone the repository:
 
-git clone https://github.com/wvalverde/restaurant-app.git
+git clone https://github.com/wvalverde67/BECP-wvalverde.git
 
 
 2. Create a virtual environment:
