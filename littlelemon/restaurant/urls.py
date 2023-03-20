@@ -1,6 +1,7 @@
 #define URL route for index() view
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('menu-items/<int:pk>', views.SingleMenuItemView.as_view(), name='single_menu_item_view'),
     path('reservations/', views.BookingViewSet.as_view({'get':'list'}), name='reservations'),
     path('reservations/<int:pk>', views.SingleBookingView.as_view(), name='single_reservation'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
 ]

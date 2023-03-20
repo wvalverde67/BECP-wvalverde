@@ -34,6 +34,7 @@
         <!--End row-->
     </article>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     const reserveButton = document.getElementById("button");
@@ -50,7 +51,12 @@
         };
         // validar que el formulario no esté vacío
         if (formdata.name === "" || formdata.bookingdate === "" || formdata.no_of_guest === "") {
-            alert("Por favor, llena todos los campos.");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill in all fields.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
             return;
         }
 
@@ -65,15 +71,39 @@
             console.log("http response" + response.status); // Esto mostrará el código de estado HTTP
             if (response.ok) {
                 // Si la respuesta es exitosa
-                alert("Reservación realizada con éxito.");
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Reservation successfully made.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
                 // Limpiar el formulario
                 document.getElementById("form").reset();
             } else {
                 // Si hay algún problema con la respuesta
-                alert("Ocurrió un problema al realizar la reservación. Por favor, inténtalo de nuevo.");
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was a problem making the reservation. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     });
 
+    reserveButton.addEventListener("mousedown", function () {
+        reserveButton.style.backgroundColor = "white";
+        reserveButton.style.color = "#495e57";
+    });
+
+    reserveButton.addEventListener("mouseup", function () {
+        reserveButton.style.backgroundColor = "#495e57";
+        reserveButton.style.color = "white";
+    });
+
+    reserveButton.addEventListener("mouseout", function () {
+        reserveButton.style.backgroundColor = "#495e57";
+        reserveButton.style.color = "white";
+    });
 </script>
 {% endblock %}

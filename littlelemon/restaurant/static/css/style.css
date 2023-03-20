@@ -281,7 +281,11 @@ footer p {
 .reserveButton:hover {
   background-color: #e7ece7;
   color: white;
-  background-color: #3e8e41; /* Cambia el color de fondo cuando se pasa por encima */
-  cursor: crosshair; /* Cambia la forma del cursor cuando se pasa por encima */
+  background-color: #3e8e41;
+}
 
+/* Estilo para el botón cuando se haga clic en él */
+.reserveButton:active {
+  background-color: white;
+  color: #495e57;
 }

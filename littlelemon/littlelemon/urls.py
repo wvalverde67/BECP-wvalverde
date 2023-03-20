@@ -20,6 +20,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from restaurant import views
 
 
+
 router = DefaultRouter()
 router.register(r'tables', views.BookingViewSet)
 
